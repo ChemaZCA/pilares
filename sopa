@@ -1,0 +1,59 @@
+// Lista de palabras para el juego
+var words = ["GATO", "PERRO"];
+
+// Crear una matriz de 9x9 para el juego
+var grid = [  ["G", "A", "T", "O", "R", "U", "G", "D", "S"],
+  ["E", "S", "T", "E", "T", "E", "E", "P", "O"],
+  ["L", "E", "A", "O", "A", "O", "A", "N", "A"],
+  ["O", "P", "E", "P", "R", "R", "E", "R", "N"],
+  ["R", "R", "R", "O", "E", "D", "O", "O", "I"],
+  ["O", "G", "G", "P", "P", "G", "R", "R", "G"],
+  ["D", "E", "O", "R", "R", "R", "E", "O", "O"],
+  ["R", "R", "G", "O", "O", "E", "G", "O", "R"],
+  ["O", "E", "T", "E", "T", "P", "E", "G", "O"]
+];
+
+// Función para buscar una palabra en la matriz
+function searchWord(word, grid) {
+  // Convertir la palabra a mayúsculas
+  var wordUpper = word.toUpperCase();
+  // Recorrer todas las posiciones de la matriz
+  for (var i = 0; i < grid.length; i++) {
+    for (var j = 0; j < grid[i].length; j++) {
+      // Comprobar si la letra actual es igual a la primera letra de la palabra
+      if (grid[i][j] === wordUpper[0]) {
+        // Comprobar si la palabra se encuentra en dirección horizontal hacia la derecha
+        if (j + wordUpper.length <= grid[i].length && grid[i].slice(j, j + wordUpper.length).join("") === wordUpper) {
+          return true;
+        }
+        // Comprobar si la palabra se encuentra en dirección vertical hacia abajo
+        if (i + wordUpper.length <= grid.length) {
+          var verticalWord = "";
+          for (var k = 0; k < wordUpper.length; k++) {
+            verticalWord += grid[i + k][j];
+          }
+          if (verticalWord === wordUpper) {
+            return true;
+          }
+        }
+      }
+    }
+  }
+  return false;
+}
+
+// Imprimir la matriz
+console.log("Matriz:");
+for (var i = 0; i < grid.length; i++) {
+  console.log(grid[i].join(" "));
+}
+
+// Buscar cada palabra en la matriz y mostrar el resultado
+for (var i = 0; i < words.length; i++) {
+  var word = words[i];
+  if (searchWord(word, grid)) {
+    console.log("La palabra " + word + " se encuentra en la matriz.");
+  } else {
+    console.log("La palabra " + word + " no se encuentra en la matriz.");
+  }
+}
