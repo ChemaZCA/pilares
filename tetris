@@ -1,0 +1,45 @@
+// Matriz para almacenar las figuras de Tetris
+var tetrisFigures = [];
+
+// Figura L
+tetrisFigures.push([  ["*", "*", "*"],
+  ["*", " ", " "]
+]);
+
+// Figura J
+tetrisFigures.push([  ["*", "*", "*"],
+  [" ", " ", "*"]
+]);
+
+// Figura T
+tetrisFigures.push([  ["*", "*", "*"],
+  [" ", "*", " "]
+]);
+
+// Figura Z
+tetrisFigures.push([  ["*", "*", " "],
+  [" ", "*", "*"]
+]);
+
+// Figura S
+tetrisFigures.push([  [" ", "*", "*"],
+  ["*", "*", " "]
+]);
+
+// Figura O
+tetrisFigures.push([  ["*", "*",],
+  ["*", "*"]
+]);
+
+// Figura I
+tetrisFigures.push([  ["*", "*", "*", "*"]
+]);
+
+// Imprimir todas las figuras de Tetris
+for (var i = 0; i < tetrisFigures.length; i++) {
+  console.log("Figura " + (i+1) + ":");
+  for (var j = 0; j < tetrisFigures[i].length; j++) {
+    console.log(tetrisFigures[i][j].join(""));
+  }
+  console.log("");
+}
